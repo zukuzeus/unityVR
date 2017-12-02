@@ -12,8 +12,10 @@ public class crumblesGenerator : MonoBehaviour {
     private float[] AreaBounds = new float[4];
     private float fountain_x_half_size;
     private float fountain_z_half_size;
-    private float marginFromFountain=5;
-    private float marginFromCrumble = 5;
+    private float crumble_x_half_size;
+    private float crumble_z_half_size;
+    private float marginFromFountain = 2.0f;
+    private float marginFromCrumble = 0.5f;
     // Use this for initialization
     void Start () {
         Debug.Log(Crumble.GetComponent<Renderer>().bounds.size.x);
@@ -23,6 +25,7 @@ public class crumblesGenerator : MonoBehaviour {
     void PlaceObjectsOnArea()
     {
         SetAreaForPlacingObjects();
+        CalculateCrumbleSize();
         CalculateFountainSize();
         int all_size = numberOfCrumbles + numberOfStones;
         int j = 0;
@@ -47,18 +50,25 @@ public class crumblesGenerator : MonoBehaviour {
             }
            
         }
-    }bool CheckIfCoordinatesAreInsideFountain(Vector3[] AllCoordinates, int i) {
+    }
+    bool CheckIfCoordinatesAreInsideFountain(Vector3[] AllCoordinates, int i) {
         return (AllCoordinates[i].x > -fountain_x_half_size - marginFromFountain && AllCoordinates[i].x < fountain_x_half_size + marginFromFountain && AllCoordinates[i].z > -fountain_z_half_size - marginFromFountain && AllCoordinates[i].z < fountain_z_half_size + marginFromFountain);
     }
-    bool CheckIfObjectCoordinatesAreNew(Vector3[] Coord, int i) {
+   
+    bool CheckIfObjectCoordinatesAreNew(Vector3[] Coordinates, int i) {
         for (int j = 0; j < i; j++)
         {
-            if (Coord[j]== Coord[i])
+            if (Coordinates[i].x > Coordinates[j].x - crumble_x_half_size - marginFromCrumble && Coordinates[i].x < Coordinates[j].x +crumble_x_half_size + marginFromCrumble && Coordinates[i].z > Coordinates[j].z - crumble_z_half_size - marginFromCrumble && Coordinates[i].z < Coordinates[j].z + crumble_z_half_size + marginFromCrumble)
             {
                 return false;
             }
         }
         return true;
+    }
+    void CalculateCrumbleSize()
+    {
+        crumble_x_half_size = Crumble.GetComponent<Renderer>().bounds.size.x / 2;
+        crumble_z_half_size = Crumble.GetComponent<Renderer>().bounds.size.z / 2;
     }
     void CalculateFountainSize()
     {
