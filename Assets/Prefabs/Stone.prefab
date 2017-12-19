@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33371308009816024}
   - component: {fileID: 65089436104230080}
   - component: {fileID: 23403212541184882}
+  - component: {fileID: 114188826933048576}
   m_Layer: 0
   m_Name: Stone
   m_TagString: Untagged
@@ -88,8 +89,24 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1304350331499454}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 3, y: 10, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114188826933048576
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1304350331499454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7f56cadc5df999448aac334dd87cec9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectNormalMaterial: {fileID: 2100000, guid: ad433a9196221a94b8d736d2956ef580,
+    type: 2}
+  triggerMaterial: {fileID: 2100000, guid: a24037aa2dae5b145b048dcaf948032a, type: 2}
+  isPickable: 1
+  kindOfObject: stone
