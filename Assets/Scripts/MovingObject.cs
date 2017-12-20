@@ -7,6 +7,7 @@ public class MovingObject : MonoBehaviour
 {
     [SerializeField]
     Transform _destination;
+    Transform _destination1;
     NavMeshAgent _navMeshagent;
 
     // Use this for initialization
@@ -22,6 +23,10 @@ public class MovingObject : MonoBehaviour
         {
             SetDestination();
         }
+    }
+    void Update()
+    {
+       
     }
 
     private void SetDestination()
