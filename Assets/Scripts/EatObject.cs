@@ -77,12 +77,12 @@ public class EatObject : MonoBehaviour
             switch (pickableKind)
             {
                 case "crumble":
-                    ObjectConsumables.CrumblesCounterPlayer++;
-                    Debug.Log("crumbles player= " + ObjectConsumables.CrumblesCounterPlayer);
+                    ScoreScript.CrumblesCounter++;
+                    Debug.Log("crumbles player= " + ScoreScript.CrumblesCounter);
                     break;
                 case "stone":
-                    ObjectConsumables.StoneCounterPlayer++;
-                    Debug.Log("stones player= " + ObjectConsumables.StoneCounterPlayer);
+                    ScoreScript.StoneCounter++;
+                    Debug.Log("stones player= " + ScoreScript.StoneCounter);
                     break;
                 default:
                     break;
@@ -93,12 +93,12 @@ public class EatObject : MonoBehaviour
             switch (pickableKind)
             {
                 case "crumble":
-                    ObjectConsumables.CrumblesCounterBot++;
-                    Debug.Log("crumbles bot= " + ObjectConsumables.CrumblesCounterBot);
+                    ScoreScript.CrumblesCounterBot++;
+                    Debug.Log("crumbles bot= " + ScoreScript.CrumblesCounterBot);
                     break;
                 case "stone":
-                    ObjectConsumables.StoneCounterBot++;
-                    Debug.Log("stones bot= " + ObjectConsumables.StoneCounterBot);
+                    ScoreScript.StoneCounterBot++;
+                    Debug.Log("stones bot= " + ScoreScript.StoneCounterBot);
                     break;
                 default:
                     break;
