@@ -7,7 +7,7 @@ public class EatObject : MonoBehaviour
     public Material ObjectNormalMaterial;
     public Material triggerMaterial;
     public bool isPickable;
-    public static string kindOfObject;
+    public string kindOfObject;
     private bool playerInArea;
     private bool isPickedUp;
     private string tag;
@@ -40,10 +40,10 @@ public class EatObject : MonoBehaviour
 
         }
     }
-    public static string getObjectKind()
-    {
-        return kindOfObject;
-    }
+    //public static string getObjectKind()
+    //{
+    //    return kindOfObject;
+    //}
     private void placeDown()
     {
         if (Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.JoystickButton1))

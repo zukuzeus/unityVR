@@ -47,19 +47,19 @@ public class MovingObject : MonoBehaviour
             {
                 _waiting = true;
                 _waitTimer = 0f;
-                switch (EatObject.getObjectKind())
-                {
-                    case "crumble":
-                        ScoreScript.CrumblesCounterBot++;
-                        Debug.Log("crumbles bot= " + ScoreScript.CrumblesCounterBot);
-                        break;
-                    case "stone":
-                        ScoreScript.StoneCounterBot++;
-                        Debug.Log("stones bot= " + ScoreScript.StoneCounterBot);
-                        break;
-                    default:
-                        break;
-                }
+                //switch (EatObject.getObjectKind())
+                //{
+                //    case "crumble":
+                //        ScoreScript.CrumblesCounterBot++;
+                //        Debug.Log("crumbles bot= " + ScoreScript.CrumblesCounterBot);
+                //        break;
+                //    case "stone":
+                //        ScoreScript.StoneCounterBot++;
+                //        Debug.Log("stones bot= " + ScoreScript.StoneCounterBot);
+                //        break;
+                //    default:
+                //        break;
+                //}
                 _navMeshagent.Stop();
                 if (_navMeshagent.isStopped) {
                     Destroy(selected_object);

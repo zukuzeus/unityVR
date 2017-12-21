@@ -4846,6 +4846,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d6a53a0edb1ca654fa47280067859a4e, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &465907455 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 406950, guid: a5eed1cf4e0dbcb44a9092a7ba5e87c7, type: 2}
+  m_PrefabInternal: {fileID: 162061663}
 --- !u!1001 &467755343
 Prefab:
   m_ObjectHideFlags: 0
@@ -14137,7 +14141,7 @@ Transform:
   m_LocalPosition: {x: 0.45848083, y: 33.336296, z: 12.286865}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1929020443}
+  - {fileID: 465907455}
   - {fileID: 1806081601}
   m_Father: {fileID: 930795268}
   m_RootOrder: 4
@@ -17729,14 +17733,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 406950, guid: a5eed1cf4e0dbcb44a9092a7ba5e87c7, type: 2}
   m_PrefabInternal: {fileID: 1922494295}
---- !u!4 &1929020443 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 406950, guid: a5eed1cf4e0dbcb44a9092a7ba5e87c7, type: 2}
-  m_PrefabInternal: {fileID: 162061663}
-    - target: {fileID: 199626, guid: 65d689c4c74903b48becb5cc2f18267a, type: 2}
-      propertyPath: m_TagString
-      value: Bot
-      objectReference: {fileID: 0}
 --- !u!1 &1946747671
 GameObject:
   m_ObjectHideFlags: 0
@@ -19968,6 +19964,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Crumble: {fileID: 1304350331499454, guid: 54fa1fa5536001d4b82bd926f20fb87d, type: 2}
   Stone: {fileID: 1304350331499454, guid: b0732fe599f334440a1df114612fa103, type: 2}
+  Pigeon: {fileID: 1328273480465316, guid: 2bda8647cf3e57a4a9ebb4cfea02a8b7, type: 2}
 --- !u!1001 &2106063930
 Prefab:
   m_ObjectHideFlags: 0
