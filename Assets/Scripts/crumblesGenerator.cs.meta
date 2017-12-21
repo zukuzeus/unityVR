@@ -1,10 +1,13 @@
 fileFormatVersion: 2
 guid: 28ca4839391851f4bbe738e1f43a7b4d
-timeCreated: 1512140690
+timeCreated: 1513814310
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Crumble: {instanceID: 0}
+  - Stone: {instanceID: 0}
+  - Pigeon: {fileID: 1328273480465316, guid: 2bda8647cf3e57a4a9ebb4cfea02a8b7, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -5,6 +5,7 @@ public class crumblesGenerator : MonoBehaviour
 
     public GameObject Crumble;
     public GameObject Stone;
+    public GameObject Pigeon;
     private GameObject Ground;
     private Vector3[] CrumblesCoordinates = new Vector3[numberOfCrumbles];
     private Vector3[] StonesCoordinates = new Vector3[numberOfStones];
@@ -20,9 +21,11 @@ public class crumblesGenerator : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+
         Debug.Log(Crumble.GetComponent<Renderer>().bounds.size.x);
         Debug.Log(Crumble.GetComponent<Renderer>().bounds.size.z);
         PlaceObjectsOnArea();
+        Instantiate(Pigeon, Pigeon.transform.position, Quaternion.identity);
     }
     void PlaceObjectsOnArea()
     {

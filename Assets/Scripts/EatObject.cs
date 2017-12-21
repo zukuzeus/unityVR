@@ -7,7 +7,7 @@ public class EatObject : MonoBehaviour
     public Material ObjectNormalMaterial;
     public Material triggerMaterial;
     public bool isPickable;
-    public string kindOfObject;
+    public static string kindOfObject;
     private bool playerInArea;
     private bool isPickedUp;
     private string tag;
@@ -36,10 +36,13 @@ public class EatObject : MonoBehaviour
         {
             isPickedUp = true;
             counterIncrement(kindOfObject, tag);
-
             Destroy(gameObject);
 
         }
+    }
+    public static string getObjectKind()
+    {
+        return kindOfObject;
     }
     private void placeDown()
     {
