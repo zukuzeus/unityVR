@@ -60,7 +60,9 @@ public class EatObject : MonoBehaviour
           
             this.tag = other.tag;
             Debug.Log("tag= " + other.tag);
-            GetComponent<Renderer>().material = triggerMaterial;
+            if (other.tag == "Player") {
+                GetComponent<Renderer>().material = triggerMaterial;
+            }          
             playerInArea = true;
         }
     }
@@ -71,7 +73,10 @@ public class EatObject : MonoBehaviour
         {
             this.tag = "";
             playerInArea = false;
-            GetComponent<Renderer>().material = ObjectNormalMaterial;
+            if (other.tag == "Player")
+            {
+                GetComponent<Renderer>().material = ObjectNormalMaterial;
+            }         
         }
     }
     private void counterIncrement(string pickableKind, string playerOrBot)
