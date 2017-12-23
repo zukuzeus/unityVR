@@ -82,6 +82,7 @@ public class EatObject : MonoBehaviour
             {
                 case "crumble":
                     ScoreScript.CrumblesCounter++;
+                    ScoreScript.CrumblesEaten++;
                     Debug.Log("crumbles player= " + ScoreScript.CrumblesCounter);
                     break;
                 case "stone":
@@ -98,6 +99,7 @@ public class EatObject : MonoBehaviour
             {
                 case "crumble":
                     ScoreScript.CrumblesCounterBot++;
+                    ScoreScript.CrumblesEaten++;
                     Debug.Log("crumbles bot= " + ScoreScript.CrumblesCounterBot);
                     break;
                 case "stone":
