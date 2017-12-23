@@ -32,18 +32,19 @@ public class EatObject : MonoBehaviour
     }
     private void pickUp()
     {
-        if (Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.JoystickButton1))
+        if ((Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.JoystickButton1)) && tag == "Player")
         {
             isPickedUp = true;
             counterIncrement(kindOfObject, tag);
             Destroy(gameObject);
 
         }
+        else if (tag == "Bot" && MovingObject.consumedObject)
+        {
+            counterIncrement(kindOfObject, tag);
+            MovingObject.consumedObject = false;
+        }
     }
-    //public static string getObjectKind()
-    //{
-    //    return kindOfObject;
-    //}
     private void placeDown()
     {
         if (Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.JoystickButton1))

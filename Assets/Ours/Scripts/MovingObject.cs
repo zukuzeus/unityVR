@@ -9,23 +9,20 @@ public class MovingObject : MonoBehaviour
     public float distancefromTarget;
     public string Tag;
     NavMeshAgent _navMeshagent;
-    //Dictates whether the agent waits on each node.
-    public bool _WaitingOnDestinationPlace;
-
-    //The total time we wait at each node.
-    [SerializeField]
-    float _totalWaitTime = 3f;
-
+    static Animator _anim;
+    float _totalWaitTime = 5.15f;
+    float _eatTime = 1.28f;
     bool _travelling;
     bool _waiting;
+    bool _eatObject;
     float _waitTimer;
     GameObject selected_object;
+    public static bool consumedObject;
 
-    // Use this for initialization
     public void Start()
     {
         _navMeshagent = this.GetComponent<NavMeshAgent>();
-
+        _anim = GetComponent<Animator>();
         if (_navMeshagent == null)
         {
             Debug.LogError("Nav Mesh Agent component not found attached to " + gameObject.name);
@@ -42,43 +39,28 @@ public class MovingObject : MonoBehaviour
         if (_travelling && _navMeshagent.remainingDistance <= distancefromTarget)
         {
             _travelling = false;
-            //If we're going to wait, then wait.
-            if (_WaitingOnDestinationPlace)
-            {
-                _waiting = true;
-                _waitTimer = 0f;
-                //switch (EatObject.getObjectKind())
-                //{
-                //    case "crumble":
-                //        ScoreScript.CrumblesCounterBot++;
-                //        Debug.Log("crumbles bot= " + ScoreScript.CrumblesCounterBot);
-                //        break;
-                //    case "stone":
-                //        ScoreScript.StoneCounterBot++;
-                //        Debug.Log("stones bot= " + ScoreScript.StoneCounterBot);
-                //        break;
-                //    default:
-                //        break;
-                //}
-                _navMeshagent.Stop();
-                if (_navMeshagent.isStopped) {
-                    Destroy(selected_object);
-                }
-                _navMeshagent.Resume();
-            }
-            else
-            {
-                SetDestination();
-                Destroy(selected_object);
-            }
+            _navMeshagent.isStopped = true;
+            transform.LookAt(selected_object.transform);
+            _anim.SetBool("isEating", true);
+            _anim.SetBool("isWalking", false); 
+            _waitTimer = 0f;
+            _waiting = true;
+            _eatObject = true;
         }
         //Instead if we're waiting.
         if (_waiting)
         {
             _waitTimer += Time.deltaTime;
+            if (_eatObject && _waitTimer >= 1.26f) {
+                Destroy(selected_object);
+                consumedObject = true;
+                _eatObject = false;
+            }
             if (_waitTimer >= _totalWaitTime)
-            {   
-                _waiting = false;
+            {
+                Destroy(selected_object);       
+                _navMeshagent.isStopped = false;
+                _waiting = false;       
                 SetDestination();
             }
         }
@@ -88,8 +70,11 @@ public class MovingObject : MonoBehaviour
     {
         selected_object = FindClosestTarget(Tag);
         Vector3 targetVector = selected_object.transform.position;
+        _anim.SetBool("isWalking", true);
+        _anim.SetBool("isEating", false);
+        _navMeshagent.isStopped = false;
         _navMeshagent.SetDestination(targetVector);
-        _travelling = true;
+        _travelling = true;    
     }
 
     private GameObject FindClosestTarget(string trgt)
