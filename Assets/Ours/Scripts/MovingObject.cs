@@ -17,7 +17,7 @@ public class MovingObject : MonoBehaviour
     bool _eatObject;
     float _waitTimer;
     GameObject selected_object;
-    public static bool consumedObject;
+    public static bool consumedObject = false;
 
     public void Start()
     {
@@ -34,7 +34,7 @@ public class MovingObject : MonoBehaviour
     }
 
     public void Update()
-    {
+    {   
         if (_travelling && _navMeshagent.remainingDistance <= distancefromTarget)
         {
             _travelling = false;
@@ -53,8 +53,8 @@ public class MovingObject : MonoBehaviour
                 if (selected_object != null)
                 {
                     Destroy(selected_object);
-                }
-                consumedObject = true;
+                    consumedObject = true;
+                }               
                 _eatObject = false;
             }
             if (_waitTimer >= _totalWaitTime)
