@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -13055,7 +13055,7 @@ Animator:
   m_GameObject: {fileID: 1315922952}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: e3caa5f7fe5010148834c239555d45ae, type: 3}
-  m_Controller: {fileID: 9100000, guid: 5e24aaf7aaef5394facc1afa520c1782, type: 2}
+  m_Controller: {fileID: 9100000, guid: 398a745e169cec740ace9d8a6dc5a237, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1

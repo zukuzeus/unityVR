@@ -39,7 +39,6 @@ public class MovingObject : MonoBehaviour
         {
             _travelling = false;
             _navMeshagent.isStopped = true;
-            transform.LookAt(selected_object.transform);
             _anim.SetBool("isEating", true);
             _anim.SetBool("isWalking", false); 
             _waitTimer = 0f;
@@ -51,16 +50,15 @@ public class MovingObject : MonoBehaviour
         {
             _waitTimer += Time.deltaTime;
             if (_eatObject && _waitTimer >= 1.26f) {
-                Destroy(selected_object);
+                if (selected_object != null)
+                {
+                    Destroy(selected_object);
+                }
                 consumedObject = true;
                 _eatObject = false;
             }
             if (_waitTimer >= _totalWaitTime)
             {
-                if (selected_object != null)
-                {
-                    Destroy(selected_object);
-                }      
                 _navMeshagent.isStopped = false;
                 _waiting = false;       
                 SetDestination();
