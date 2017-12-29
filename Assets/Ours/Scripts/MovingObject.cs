@@ -71,7 +71,7 @@ public class MovingObject : MonoBehaviour
 
     private void SetDestination()
     {
-        if (GameObject.FindWithTag("Pickable"))
+        if (GameObject.FindWithTag(Tag) && ScoreScript.CrumblesEaten < crumblesGenerator.numberOfCrumbles)
         {
             selected_object = FindClosestTarget(Tag);
             Vector3 targetVector = selected_object.transform.position;
