@@ -17,7 +17,7 @@ public class MovingObject : MonoBehaviour
     bool _eatObject;
     float _waitTimer;
     GameObject selected_object;
-    public static bool consumedObject = false;
+    //public static bool consumedObject = false;
 
     public void Start()
     {
@@ -52,10 +52,13 @@ public class MovingObject : MonoBehaviour
             if (_eatObject && _waitTimer >= 1.26f) {
                 if (selected_object != null)
                 {
+                    //consumedObject = true;
                     Destroy(selected_object);
-                    consumedObject = true;
+                    EatObject.counterIncrement(EatObject.pickableObject, "Bot");
+                    //consumedObject = true;
                 }               
                 _eatObject = false;
+                //consumedObject = false;
             }
             if (_waitTimer >= _totalWaitTime)
             {
@@ -68,13 +71,17 @@ public class MovingObject : MonoBehaviour
 
     private void SetDestination()
     {
-        selected_object = FindClosestTarget(Tag);
-        Vector3 targetVector = selected_object.transform.position;
-        _anim.SetBool("isWalking", true);
-        _anim.SetBool("isEating", false);
-        _navMeshagent.isStopped = false;
-        _navMeshagent.SetDestination(targetVector);
-        _travelling = true;    
+        if (GameObject.FindWithTag("Pickable"))
+        {
+            selected_object = FindClosestTarget(Tag);
+            Vector3 targetVector = selected_object.transform.position;
+            _anim.SetBool("isWalking", true);
+            _anim.SetBool("isEating", false);
+            _navMeshagent.isStopped = false;
+            _navMeshagent.SetDestination(targetVector);
+            _travelling = true;
+        }
+        
     }
 
     private GameObject FindClosestTarget(string trgt)

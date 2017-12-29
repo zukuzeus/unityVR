@@ -10,7 +10,9 @@ public class ScoreScript : MonoBehaviour
     public static int CrumblesCounterBot;
     public static int StoneCounterBot;
     public static int CrumblesEaten;
+    public static int PlayerLifes;
     public Slider pointsbar;
+
 
     // Use this for initialization
     void Start()
@@ -20,6 +22,7 @@ public class ScoreScript : MonoBehaviour
         CrumblesCounterBot = 0;
         StoneCounterBot = 0;
         CrumblesEaten=0;
+        PlayerLifes = 3;
         pointsbar.value = 0.5f;
     }
 
@@ -29,7 +32,10 @@ public class ScoreScript : MonoBehaviour
         if (CrumblesEaten != 0) {
             pointsbar.value = CalculatePoints();
         }
-        
+        if (StoneCounter <= 3) {
+            PlayerLifes = 3 - StoneCounter;
+        }
+
     }
 
     float CalculatePoints()

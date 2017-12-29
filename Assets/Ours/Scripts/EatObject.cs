@@ -8,10 +8,11 @@ public class EatObject : MonoBehaviour
     public Material triggerMaterial;
     public bool isPickable;
     public string kindOfObject;
+    public static string pickableObject;
     private bool playerInArea;
     private bool isPickedUp;
     private string tag;
-
+    float _waitTimer;
 
     void start()
     {
@@ -39,15 +40,19 @@ public class EatObject : MonoBehaviour
             Destroy(gameObject);
 
         }
-        else if (tag == "Bot" && MovingObject.consumedObject)
+        else if (tag == "Bot" )
         {
-            counterIncrement(kindOfObject, tag);
-            MovingObject.consumedObject = false;
+            isPickedUp = true;
+            pickableObject = kindOfObject;
         }
     }
     private void placeDown()
     {
         if (Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.JoystickButton1))
+        {
+            isPickedUp = false;
+        }
+        else if (tag == "Bot")
         {
             isPickedUp = false;
         }
@@ -66,7 +71,6 @@ public class EatObject : MonoBehaviour
             playerInArea = true;
         }
     }
-
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player" || other.tag == "Bot")
@@ -79,7 +83,7 @@ public class EatObject : MonoBehaviour
             }         
         }
     }
-    private void counterIncrement(string pickableKind, string playerOrBot)
+    public static void counterIncrement(string pickableKind, string playerOrBot)
     {
         if (playerOrBot == "Player")
         {
