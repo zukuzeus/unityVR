@@ -23,7 +23,7 @@ public class EatObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerInArea && isPickable)
+        if (playerInArea && isPickable && !GameController.gameOver)
         {
             if (isPickedUp)
                 placeDown();
@@ -65,7 +65,7 @@ public class EatObject : MonoBehaviour
           
             this.tag = other.tag;
             Debug.Log("tag= " + other.tag);
-            if (other.tag == "Player") {
+            if (other.tag == "Player"&& !GameController.gameOver) {
                 GetComponent<Renderer>().material = triggerMaterial;
             }          
             playerInArea = true;
@@ -77,7 +77,7 @@ public class EatObject : MonoBehaviour
         {
             this.tag = "";
             playerInArea = false;
-            if (other.tag == "Player")
+            if (other.tag == "Player" && !GameController.gameOver)
             {
                 GetComponent<Renderer>().material = ObjectNormalMaterial;
             }         

@@ -34,39 +34,56 @@ public class MovingObject : MonoBehaviour
     }
 
     public void Update()
-    {   
-        if (_travelling && _navMeshagent.remainingDistance <= distancefromTarget)
+    {
+        if (!GameController.gameOver)
         {
-            _travelling = false;
+            if (_travelling) {
+                if (selected_object == null)
+                {
+                   SetDestination();
+                }
+            }
+            if (_travelling && _navMeshagent.remainingDistance <= distancefromTarget)
+            {
+                _travelling = false;
+                _navMeshagent.isStopped = true;
+                _anim.SetBool("isEating", true);
+                _anim.SetBool("isWalking", false);
+                _waitTimer = 0f;
+                _waiting = true;
+                _eatObject = true;
+            }
+            //Instead if we're waiting.
+            if (_waiting)
+            {
+                _waitTimer += Time.deltaTime;
+                if (_eatObject && _waitTimer >= 1.26f)
+                {
+                    if (selected_object != null)
+                    {
+                        //consumedObject = true;
+                        Destroy(selected_object);
+                        EatObject.counterIncrement(EatObject.pickableObject, "Bot");
+                        //consumedObject = true;
+                    }
+                    _eatObject = false;
+                    //consumedObject = false;
+                }
+                if (_waitTimer >= _totalWaitTime)
+                {
+                    _navMeshagent.isStopped = false;
+                    _waiting = false;
+                    SetDestination();
+                }
+            }
+        }
+        else {
             _navMeshagent.isStopped = true;
             _anim.SetBool("isEating", true);
-            _anim.SetBool("isWalking", false); 
-            _waitTimer = 0f;
-            _waiting = true;
-            _eatObject = true;
+            _anim.SetBool("isWalking", false);
+
         }
-        //Instead if we're waiting.
-        if (_waiting)
-        {
-            _waitTimer += Time.deltaTime;
-            if (_eatObject && _waitTimer >= 1.26f) {
-                if (selected_object != null)
-                {
-                    //consumedObject = true;
-                    Destroy(selected_object);
-                    EatObject.counterIncrement(EatObject.pickableObject, "Bot");
-                    //consumedObject = true;
-                }               
-                _eatObject = false;
-                //consumedObject = false;
-            }
-            if (_waitTimer >= _totalWaitTime)
-            {
-                _navMeshagent.isStopped = false;
-                _waiting = false;       
-                SetDestination();
-            }
-        }
+        
     }
 
     private void SetDestination()

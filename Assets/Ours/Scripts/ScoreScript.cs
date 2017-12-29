@@ -35,6 +35,9 @@ public class ScoreScript : MonoBehaviour
         if (StoneCounter <= 3) {
             PlayerLifes = 3 - StoneCounter;
         }
+        if (CrumblesEaten == crumblesGenerator.numberOfCrumbles || CrumblesCounter> crumblesGenerator.numberOfCrumbles/2 || CrumblesCounterBot > crumblesGenerator.numberOfCrumbles / 2) {
+            GameController.gameOver = true;
+        }
 
     }
 
