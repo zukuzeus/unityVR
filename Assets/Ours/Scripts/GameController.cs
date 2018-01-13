@@ -6,37 +6,45 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour {
 
     public static bool gameOver;
-    public Text GameOverText;
-    public Text VictoryText;
-    public Text InfoText;
-    public GameObject player;
+    public Text Text;
+    //public Text VictoryText;
+    //public Text InfoText;
+    //public GameObject player;
+    private Light myLight;
 
     // Use this for initialization
     void Start () {
         gameOver = false;
-        GameOverText.text = "";
-        VictoryText.text = "";
-        InfoText.text = "";
+        Text.text = "";
+       // myLight = GetComponent<Light>();
     }
 	
 	// Update is called once per frame
 	void Update () {
+        //if (Input.GetKeyUp(KeyCode.Space))
+        //{
+        //    myLight.enabled = !myLight.enabled;
+        //    myLight.color = Color.red;
+        //}
         if (gameOver) {
             if (ScoreScript.PlayerLifes > 0){
                 if (ScoreScript.CrumblesCounter > ScoreScript.CrumblesCounterBot)
                 {
-                    VictoryText.text = "VICTORY";
-                    InfoText.text = "PRESS Q TO QUIT GAME";
+                    Text.text = "VICTORY";
+                    Text.color = Color.green;
+                  //  InfoText.text = "PRESS Q TO QUIT GAME";
                 }
                 else
                 {
-                    GameOverText.text = "GAME OVER";
-                    InfoText.text = "PRESS Q TO QUIT GAME";
+                   Text.text = "GAME OVER";
+                   Text.color = Color.red;
+                    // InfoText.text = "PRESS Q TO QUIT GAME";
                 }
             }
             else {
-                GameOverText.text = "YOU DIED";
-                InfoText.text = "PRESS Q TO QUIT GAME";
+               Text.text = "YOU DIED";
+               Text.color = Color.red;
+                // InfoText.text = "PRESS Q TO QUIT GAME";
             }
             if (Input.GetKeyDown(KeyCode.Q))
             {
