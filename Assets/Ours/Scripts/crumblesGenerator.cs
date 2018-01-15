@@ -9,8 +9,8 @@ public class crumblesGenerator : MonoBehaviour
     private GameObject Ground;
     private Vector3[] CrumblesCoordinates = new Vector3[numberOfCrumbles];
     private Vector3[] StonesCoordinates = new Vector3[numberOfStones];
-    public static int numberOfCrumbles = 10;
-    public static int numberOfStones = 1;
+    public static int numberOfCrumbles = 21;
+    public static int numberOfStones = 10;
     private float[] AreaBounds = new float[4];
     private float fountain_x_half_size;
     private float fountain_z_half_size;

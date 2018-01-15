@@ -136,7 +136,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
         }
 
-
+        
         private void FixedUpdate()
         {
             GroundCheck();
@@ -214,8 +214,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             
             Vector2 input = new Vector2
                 {
-                    x = CrossPlatformInputManager.GetAxis("Horizontal"),
-                    y = CrossPlatformInputManager.GetAxis("Vertical")
+                    x = CrossPlatformInputManager.GetAxis("Oculus_GearVR_DpadX"),
+                    y = CrossPlatformInputManager.GetAxis("Oculus_GearVR_DpadY")
                 };
 			movementSettings.UpdateDesiredTargetSpeed(input);
             return input;

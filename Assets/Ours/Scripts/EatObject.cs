@@ -33,7 +33,7 @@ public class EatObject : MonoBehaviour
     }
     private void pickUp()
     {
-        if ((Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.JoystickButton1)) && tag == "Player")
+        if ((Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.JoystickButton1) || Input.GetKeyDown(KeyCode.JoystickButton0)) && tag == "Player")
         {
             isPickedUp = true;
             counterIncrement(kindOfObject, tag);
